@@ -94,7 +94,7 @@ def shift_by_letter(letter, letter_shift):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     if ord(letter) == 32:
-        print(" ")
+        print("\" \"")
     for i in range(65, 91):
         if ((ord(letter) - ord("A")) + ord(letter_shift)) >= 91: 
             return chr((ord(letter) + ord(letter_shift)) - 91)
@@ -133,7 +133,7 @@ def vigenere_cipher(message, key):
         if message[i] == " ":
             vigenere += " "
         else: 
-            vigenere_value = (((([ord(i) for i in message][i]) + ([ord(i) for i in key][i])) % 26) + 65)
+            vigenere_value = (((([ord(i) for i in message][i]) + ([ord(i) for i in key][i % len(key)])) % 26) + 65)
             vigenere += chr(vigenere_value)
     return vigenere
 
